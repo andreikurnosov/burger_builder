@@ -95,6 +95,8 @@ class BurgerBuilder extends Component {
       queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
     }
 
+    queryParams.push('price=' + this.state.totalPrice)
+
     const queryString = queryParams.join('&');
 
     this.props.history.push({
@@ -102,29 +104,6 @@ class BurgerBuilder extends Component {
       search: '?' + queryString
     });
     // alert('You continue!');
-    // this.setState({ loading: true });
-    // const order = {
-    //   ingredients: this.state.ingredients,
-    //   price: this.state.totalPrice,
-    //   customer: {
-    //     name: 'nixdie',
-    //     address: {
-    //       street: 'test street',
-    //       zipCode: '23423',
-    //       country: 'Ghana'
-    //     },
-    //     email: 'you@nutz.com'
-    //   },
-    //   deliveryMethod: 'fastest'
-    // };
-    // axios
-    //   .post('/orders.json', order)
-    //   .then((response) => {
-    //     this.setState({ loading: false, purchasing: false });
-    //   })
-    //   .catch((error) => {
-    //     this.setState({ loading: false, purchasing: false });
-    //   });
   };
 
   render() {
