@@ -8,7 +8,6 @@ import Input from '../../../components/UI/Input/Input';
 import classes from './ContactData.module.css';
 
 class ContactData extends Component {
-
   state = {
     orderForm: {
       name: {
@@ -55,12 +54,12 @@ class ContactData extends Component {
         elementType: 'select',
         elementConfig: {
           options: [
-            {value: 'fastest', displayValue: 'Fastest'},
-            {value: 'cheapest', displayValue: 'Cheapest'}
+            { value: 'fastest', displayValue: 'Fastest' },
+            { value: 'cheapest', displayValue: 'Cheapest' }
           ]
         },
         value: ''
-      },
+      }
     },
     loading: false
   };
@@ -84,32 +83,25 @@ class ContactData extends Component {
   };
 
   render() {
+    const formElementsArray = [];
+
+    for (let key in this.state.orderForm) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.orderForm[key]
+      });
+    }
+
     let form = (
       <form>
-        <Input
-          inputtype="input"
-          elementType="..."
-          elementConfig="..."
-          value="..."
-        />
-        <Input
-          inputtype="input"
-          type="text"
-          name="email"
-          placeholder="Your Email"
-        />
-        <Input
-          inputtype="input"
-          type="text"
-          name="street"
-          placeholder="Street"
-        />
-        <Input
-          inputtype="input"
-          type="text"
-          name="postal"
-          placeholder="Postal Code"
-        />
+         {formElementsArray.map((formElement) => (
+          <Input
+            key={formElement.id}
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={formElement.config.value}
+          />
+        ))};
 
         <Button btnType="Success" clicked={this.orderHandler}>
           ORDER
