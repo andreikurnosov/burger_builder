@@ -101,7 +101,8 @@ class Auth extends Component {
     );
   };
 
-  switchAuthModeHandler = () => {
+  switchAuthModeHandler = (event) => {
+    event.preventDefault();
     this.setState((prevState) => {
       return { isSignUp: !prevState.isSignUp };
     });
@@ -150,9 +151,9 @@ class Auth extends Component {
       <div className={classes.Auth}>
       {authRedirect}
         {errorMessage}
-        <form onSubmit={this.submitHandler}>
+        <form>
           {form}
-          <Button btnType="Success">SUBMIT</Button>
+          <Button clicked={this.submitHandler} btnType="Success">SUBMIT</Button>
           <Button clicked={this.switchAuthModeHandler} btnType="Danger">
             SWITCH TO {this.state.isSignUp ? 'SIGNIN' : 'SIGNUP'}
           </Button>
