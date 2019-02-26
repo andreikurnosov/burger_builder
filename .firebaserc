@@ -1,0 +1,8 @@
+{
+  "project": {
+    "default": "react-burgers"
+  },
+  "projects": {
+    "react-burgers": "reacting-burgers"
+  }
+}
