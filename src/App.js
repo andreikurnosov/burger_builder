@@ -36,7 +36,7 @@ const app = (props) => {
     routes = (
       <Switch>
         <Route path="/checkout" render={() => <Checkout />} />
-        <Route path="/orders" render={() => <Orderrs />} />
+        <Route path="/orders" render={() => <Orders />} />
         <Route path="/auth" render={() => <Auth />} />
         <Route path="/logout" exact component={Logout} />
         <Route path="/" exact component={BurgerBuilder} />
